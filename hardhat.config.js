@@ -14,6 +14,13 @@ module.exports = {
     },
     defaultNetwork: "hardhat",
     networks: {
+        hardhat: {
+            // // If you want to do some forking, uncomment this
+            // forking: {
+            //   url: MAINNET_RPC_URL
+            // }
+            chainId: 31337,
+        },
         rinkeby: {
             chainId: 4,
             url: process.env.RINKEBY_RPC_URL || "",
@@ -21,6 +28,9 @@ module.exports = {
             gasPrice: 13000000000,
             blockConfirmations: 6,
             accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+        },
+        localhost: {
+            chainId: 31337,
         },
     },
     gasReporter: {
