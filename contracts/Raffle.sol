@@ -56,6 +56,10 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
         i_interval = _interval;
     }
 
+    function enterRaffle2() public payable {
+        enterRaffle();
+    }
+
     function enterRaffle() public payable {
         // require msg.value > i_entranceFee
         if (msg.value < i_entranceFee) {
@@ -163,6 +167,10 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
     function getInterval() public view returns (uint256) {
         return i_interval;
     }
+
+    fallback() external payable {}
+
+    receive() external payable {}
 }
 
 // Enter the lottery (paying some amount)
